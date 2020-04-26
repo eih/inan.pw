@@ -1,0 +1,100 @@
+////
+/// Mixins
+/// All by Inan Hira except where indicated.
+/// @author Inan Hira
+/// @group Utilities
+////
+
+/// Axis-margin mixin
+/// @parameter {string} $margin ["auto"] - The padding value with the unit or
+/// one of `auto`, `inherit`, `initial` or `unset`.
+/// @parameter {string} $axis ["x"] - The axis for the margin. `x` is the
+/// horizontal axis while `y` is the vertical axis.
+/// @aliased margin-x margin-y
+/// @example axis-margin mixin
+/// @include axis-margin("auto", "x");
+/// // Output:
+/// // margin-left: auto;
+/// // margin-right: auto;
+@mixin axis-margin($margin: "auto", $axis: "x") {
+  $axis_value: to-lower-case($axis);
+  $margin_value: unquote($margin);
+  @if $axis-value == "x" {
+    margin-left: $margin_value;
+    margin-right: $margin_value;
+  } @else {
+    margin-top: $margin_value;
+    margin-bottom: $margin_value;
+  }
+}
+
+/// margin-x
+/// This is a shorthand mixin for `axis-margin($margin, "x")`
+/// @alias axis-margin
+/// @example margin-x mixin
+/// @include margin-x("1rem");
+/// // Output:
+/// // margin-left: 1rem;
+/// // margin-right: 1rem;
+@mixin margin-x($margin) {
+  @include axis-margin($margin, $axis: "x");
+}
+
+/// margin-y
+/// This is a shorthand mixin for `axis-margin($margin, "y")`
+/// @alias axis-margin
+/// @example margin-y mixin
+/// @include margin-y("1rem");
+/// // Output:
+/// // margin-bottom: 1rem;
+/// // margin-top: 1rem;
+@mixin margin-y($margin) {
+  @include axis-margin($margin, $axis: "y");
+}
+
+/// Axis-padding mixin
+/// @parameter {string} $padding - Single padding value with the unit or one of
+/// `inherit`, `initial` or `unset`.
+/// @parameter {string} $axis ["x"] - The axis for the padding. `x` is the
+/// horizontal axis while `y` is the vertical axis.
+/// @aliased padding-x padding-y
+/// @example axis-padding mixin
+/// @include axis-padding("1rem", "x");
+/// // Output:
+/// // padding-left: 1rem;
+/// // padding-right: 1rem;
+@mixin axis-padding($padding, $axis: "x") {
+  $axis_value: to-lower-case($axis);
+  $padding_value: unquote($padding);
+  @if $axis-value == "x" {
+    padding-left: $padding_value;
+    padding-right: $padding_value;
+  } @else {
+    padding-top: $padding_value;
+    padding-bottom: $padding_value;
+  }
+}
+
+/// padding-x
+/// This is a shorthand mixin for `axis-padding($padding, "x")`
+/// @alias axis-padding
+/// @example padding-x mixin
+/// @include padding-x("1rem");
+/// // Output:
+/// // padding-left: 1rem;
+/// // padding-right: 1rem;
+@mixin padding-x($padding) {
+  @include axis-padding($padding, $axis: "x");
+}
+
+/// padding-y
+/// This is a shorthand mixin for `axis-padding($padding, "y")`
+/// @alias axis-padding
+/// @example padding-y mixin
+/// @include padding-y("1rem");
+/// // Output:
+/// // padding-bottom: 1rem;
+/// // padding-top: 1rem;
+@mixin padding-y($padding) {
+  @include axis-padding($padding, $axis: "y");
+}
