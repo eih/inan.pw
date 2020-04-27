@@ -150,3 +150,6 @@ figure {
       -ms-flex-preferred-size: 50%;
       flex-basis: 50%;
       max-width: 50%; } }
+.footer {
+  border-top: solid 1px #e6e6e6;
+  padding-top: 1rem; }
